@@ -155,6 +155,7 @@ MonoBehaviour:
   numberOfInitialGeneration: 5
   upperLeft: {x: -8, y: -4}
   lowerRight: {x: 8, y: 4}
+  timeCount: 0
 --- !u!4 &363100876
 Transform:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ GameObject:
   - component: {fileID: 857678881}
   - component: {fileID: 857678880}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
