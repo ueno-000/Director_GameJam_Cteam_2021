@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>一画面の最大段数 (0 = 無制限)</summary>
     [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
     Rigidbody2D m_rb;
+    //Helthの設定
+    [SerializeField] int hp = 5;
+    [SerializeField]HelthController helth;
     //Animator m_anim;
     //AudioSource m_audio = default;
     void Start()
@@ -47,30 +50,29 @@ public class PlayerController : MonoBehaviour
         //        Fire1();
         //    }
         //}
+    }
 
-
-
-        /// <summary>
-        /// 弾を発射する
-        /// </summary>
-        void Fire1()
+    /// <summary>
+    /// 弾を発射する
+    /// </summary>
+    void Fire1()
+    {
+        if (m_bulletPrefab && m_muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
         {
-            if (m_bulletPrefab && m_muzzle) // m_bulletPrefab にプレハブが設定されている時 かつ m_muzzle に弾の発射位置が設定されている時
-            {
-                GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
-                go.transform.SetParent(this.transform);
-
-            }
-
-            //    private void OnTriggerEnter2D(Collider2D collision)
-            //    {
-            //        if (collision.gameObject.tag == "Enemy") ;
-            //        {
-            //            //m_anim.SetBool("player", false);
-            //            //m_anim.SetBool("p_Enemy", false);
-            //            m_anim.Play("PlayerEnemy");
-            //        }
+            GameObject go = Instantiate(m_bulletPrefab, m_muzzle.position, m_bulletPrefab.transform.rotation);  // インスペクターから設定した m_bulletPrefab をインスタンス化する
+            go.transform.SetParent(this.transform);
 
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet") 
+            {
+            hp = hp - 1;
+            Debug.Log("hpが減った");
+            helth.UpdateSlider(hp);
+            }
+     }
+    
+        
 }
