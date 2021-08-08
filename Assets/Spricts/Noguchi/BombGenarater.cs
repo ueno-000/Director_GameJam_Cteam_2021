@@ -13,6 +13,8 @@ public class BombGenarater : MonoBehaviour
     [SerializeField] float timeCount = 0;
     float generateTime = 5.0f;
 
+    public List<Bomb> bombsList = new List<Bomb>();
+
     private void Start()
     {
         Setup();
@@ -22,6 +24,7 @@ public class BombGenarater : MonoBehaviour
     {
         timeCount += Time.deltaTime;
 
+        /*
         if (timeCount >= generateTime)
         {
             timeCount = 0;
@@ -37,12 +40,11 @@ public class BombGenarater : MonoBehaviour
             float generatePosY = Random.Range(upperLeft.y, lowerRight.y);
             GenerateBomb(generatePosX, generatePosY);
         }
+        */
     }
-
 
     public void Setup()
     {
-
         for (int i = 0; i < numberOfInitialGeneration; i++)
         {
             float generatePosX = Random.Range(upperLeft.x, lowerRight.x);
@@ -54,10 +56,37 @@ public class BombGenarater : MonoBehaviour
 
     public void GenerateBomb(float x, float y)
     {
-        GameObject generateBomb = Instantiate(bombPrefab.gameObject);
+        Bomb generateBomb = Instantiate(bombPrefab);
 
         var worldPoint = transform.TransformPoint(new Vector2(x, y));
 
         generateBomb.transform.position = worldPoint;
+        generateBomb.bombsDestructor = BombExploded;
+        
+        bombsList.Add(generateBomb);
+        SetBombsId();
+    }
+
+    void SetBombsId()
+    {
+        for (int i = 0; i < bombsList.Count; i++)
+        {
+            if (bombsList[i] == null)
+            {
+                bombsList.RemoveAt(i);
+                if (i > 0)
+                {
+                    i = 0;
+                }
+            }
+            bombsList[i].id = i;
+        }
+    }
+
+    void BombExploded(int id)
+    {
+        SetBombsId();
+        bombsList.RemoveAt(id);
+        SetBombsId();
     }
 }
