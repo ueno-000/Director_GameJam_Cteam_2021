@@ -14,8 +14,6 @@ public class Player2Controller : MonoBehaviour
     [SerializeField] GameObject m_bulletPrefab = null;
     /// <summary>弾の発射位置</summary>
     [SerializeField] Transform m_muzzle = null;
-    /// <summary>一画面の最大段数 (0 = 無制限)</summary>
-    [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
     Rigidbody2D m_rb;
     //AudioSource m_audio = default;
     void Start()
@@ -38,13 +36,7 @@ public class Player2Controller : MonoBehaviour
             Fire2();
         }
 
-        //if (Input.GetButton("Fire2"))
-        //{
-        //    if (m_bulletLimit == 0 || this.GetComponentsInChildren<PlayerBulletController>().Length < m_bulletLimit)    // 画面内の弾数を制限する
-        //    {
-        //        Fire1();
-        //    }
-        //}
+
 
 
 

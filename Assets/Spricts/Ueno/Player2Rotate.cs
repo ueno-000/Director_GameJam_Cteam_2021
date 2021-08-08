@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player2Rotate : MonoBehaviour
 {
-    [SerializeField] int x = 50;
+
 
     private void Update()
     {

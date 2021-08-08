@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject m_bulletPrefab = null;
     /// <summary>弾の発射位置</summary>
     [SerializeField] Transform m_muzzle = null;
-    /// <summary>一画面の最大段数 (0 = 無制限)</summary>
-    [SerializeField, Range(0, 10)] int m_bulletLimit = 0;
     Rigidbody2D m_rb;
     //Helthの設定
     [SerializeField] int hp = 5;
@@ -70,18 +68,18 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightShift))
             {
                 Fire1();
-                m_audio.Play();
+                m_audio.PlayOneShot(m_audio.clip);
             }
         }
 
         //HP0でシーン遷移
 
-        if (id==1&&hp==0)
+        if (id==1&&hp<=0)
         {
             Debug.Log("Player1:HPが０になってしまった");
             SceneManager.LoadScene("result_p2_win");
         }
-        if (id == 2 && hp == 0)
+        if (id == 2 && hp <= 0)
         {
             Debug.Log("Player2:HPが０になってしまった");
             SceneManager.LoadScene("result_p1_win");
@@ -107,7 +105,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Bullet2")
             {
-                hp = hp - 1;
+                hp = hp - 5;
                 m_audio.Play();
                 Debug.Log("Player1:hpが減った");
                 helth.UpdateSlider(hp);
@@ -117,7 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Bullet")
             {
-                hp = hp - 1;
+                hp = hp - 5;
                 m_audio.Play();
                 Debug.Log("Player2:hpが減った");
                 helth.UpdateSlider(hp);
