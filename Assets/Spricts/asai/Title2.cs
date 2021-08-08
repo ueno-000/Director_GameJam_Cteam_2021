@@ -17,7 +17,8 @@ public class Title2 : MonoBehaviour
     float image_green;
     float image_blue;
     float image_transparent;
-   
+
+ 
     void Start()
     {
         
@@ -28,17 +29,24 @@ public class Title2 : MonoBehaviour
         image_transparent = image.color.a;
     }
     void Update()
-    {
-       
-
+    { 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             addFlag = true;
         }
-        if (addFlag == true)
+
+        if (addFlag == false)
         {
+            addfadein();
+
+        }
+        else
+        {
+            //Debug.Log("a");
+
             addfadeout();
         }
+       
     }
 
     void addfadeout()
@@ -50,8 +58,18 @@ public class Title2 : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("result_p2_win");//仮
+            
+            SceneManager.LoadScene("MasterGameScene");//仮
         }
+    }
+
+    void addfadein()
+    {
+        setTransparent_fade();
+        {
+            image_transparent -= fadespeed;
+        }
+
     }
     void setTransparent_fade()
     {
