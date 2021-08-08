@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/asai/result_p2_win.unity
+    guid: 1838383b3015010438424fb1bcc7142b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/asai/kurejitto.unity
+    guid: aba4f8db3322bb54b9fc9265c6d2f273
+  - enabled: 1
+    path: Assets/Scenes/asai/result_draw.unity
+    guid: a4b5c1e35b59364468c96a060a3c8c06
+  - enabled: 1
+    path: Assets/Scenes/asai/result_p1_win.unity
+    guid: 2a8b12ffb9a80e34d942559294f47f4c
+  - enabled: 1
+    path: Assets/Scenes/asai/title.unity
+    guid: 652c27ba7bbb695499474938229da4b2
   m_configObjects: {}
