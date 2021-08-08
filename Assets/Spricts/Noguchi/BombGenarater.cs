@@ -15,6 +15,8 @@ public class BombGenarater : MonoBehaviour
 
     public List<Bomb> bombsList = new List<Bomb>();
 
+    [SerializeField] bulletGenerater bulletgenerater;
+
     private void Start()
     {
         Setup();
@@ -24,7 +26,7 @@ public class BombGenarater : MonoBehaviour
     {
         timeCount += Time.deltaTime;
 
-        /*
+        
         if (timeCount >= generateTime)
         {
             timeCount = 0;
@@ -40,7 +42,7 @@ public class BombGenarater : MonoBehaviour
             float generatePosY = Random.Range(upperLeft.y, lowerRight.y);
             GenerateBomb(generatePosX, generatePosY);
         }
-        */
+        
     }
 
     public void Setup()
