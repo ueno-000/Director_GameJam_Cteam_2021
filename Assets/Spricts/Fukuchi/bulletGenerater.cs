@@ -10,14 +10,6 @@ public class bulletGenerater : MonoBehaviour
 
     public Vector2 generatePos;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            bulletShot(120f, 120f);
-
-        }
-    }
 
     //弾を生成するための関数
     public void bulletShot(float x, float y)
