@@ -8,6 +8,8 @@ public class bulletGenerater : MonoBehaviour
     public GameObject bullet;
     public float speed = 30f; //弾の速度
 
+    public Vector2 generatePos;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -29,11 +31,11 @@ public class bulletGenerater : MonoBehaviour
     }
 
 
-    public void bulletShot(float angle)
+    public void bulletShot(float angle, Vector2 pos)
     {
         Vector3 angleV3 = GetDirection(angle);
-        Vector2 bulletPos = bulletPoint.transform.position;
-        GameObject newBullet = Instantiate(bullet, bulletPos, transform.rotation);
+        //generatePos = bulletPoint.transform.position;
+        GameObject newBullet = Instantiate(bullet, pos, transform.rotation);
         //Vector2 dir = newBullet.transform.right;
         newBullet.GetComponent<Rigidbody2D>().AddForce(angleV3 * 10);
         newBullet.name = bullet.name;
