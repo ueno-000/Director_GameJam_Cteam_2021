@@ -42,7 +42,7 @@ public class Title2 : MonoBehaviour
         }
         else
         {
-            //Debug.Log("a");
+            
 
             addfadeout();
         }
@@ -73,6 +73,6 @@ public class Title2 : MonoBehaviour
     }
     void setTransparent_fade()
     {
-        GetComponent<Image>().color = new Color(image_red, image_green, image_blue, image_transparent);
+        image.color = new Color(image_red, image_green, image_blue, image_transparent);
     }  
 }
