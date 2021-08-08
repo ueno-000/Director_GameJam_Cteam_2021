@@ -37,7 +37,6 @@ public class bulletGenerater : MonoBehaviour
     // 指定された角度（ 0 ～ 360 ）をベクトルに変換して返す
     public  Vector3 GetDirection(float angle)
     {
-        Debug.Log(Mathf.Cos(angle * Mathf.Deg2Rad));
         return new Vector3
         (
             Mathf.Cos(angle * Mathf.Deg2Rad) * speed,
