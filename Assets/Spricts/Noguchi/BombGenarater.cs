@@ -17,6 +17,8 @@ public class BombGenarater : MonoBehaviour
 
     [SerializeField] bulletGenerater bulletgenerater;
 
+    public bool isActive = false;
+
     private void Start()
     {
         Setup();
@@ -24,27 +26,31 @@ public class BombGenarater : MonoBehaviour
 
     public void Update()
     {
-        timeCount += Time.deltaTime;
-
-        
-        if (timeCount >= generateTime)
+        if (isActive)
         {
-            timeCount = 0;
-            if (generateTime > 0.2f)
-            {
-                generateTime -= 0.3f;
-            }
-            else if (generateTime != 0.2f)
-            {
-                generateTime = 0.2f;
-            }
-            float generatePosX = Random.Range(upperLeft.x, lowerRight.x);
-            float generatePosY = Random.Range(upperLeft.y, lowerRight.y);
-            GenerateBomb(generatePosX, generatePosY);
-        }
-        
-    }
+            timeCount += Time.deltaTime;
 
+
+            if (timeCount >= generateTime)
+            {
+                timeCount = 0;
+                if (generateTime > 0.2f)
+                {
+                    generateTime -= 0.3f;
+                }
+                else if (generateTime != 0.2f)
+                {
+                    generateTime = 0.2f;
+                }
+                float generatePosX = Random.Range(upperLeft.x, lowerRight.x);
+                float generatePosY = Random.Range(upperLeft.y, lowerRight.y);
+                GenerateBomb(generatePosX, generatePosY);
+            }
+
+        }
+
+
+    }
     public void Setup()
     {
         for (int i = 0; i < numberOfInitialGeneration; i++)
